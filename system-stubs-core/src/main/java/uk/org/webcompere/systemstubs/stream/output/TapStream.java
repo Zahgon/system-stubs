@@ -8,18 +8,19 @@ import java.nio.charset.Charset;
  * interface too.
  */
 public class TapStream extends ByteArrayOutputStream implements Output<TapStream> {
+
     @Override
     public String getText() {
-        return new String(getOutputStream().toByteArray(), Charset.defaultCharset());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public TapStream getOutputStream() {
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void clear() {
-        reset();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

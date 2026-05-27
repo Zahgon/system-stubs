@@ -7,14 +7,14 @@ import java.io.OutputStream;
  * @since 1.0.0
  */
 public class DisallowWriteStream extends OutputStream implements Output<DisallowWriteStream> {
+
     @Override
     public void write(int b) {
-        throw new AssertionError("Tried to write '" + (char) b +
-            "' although this is not allowed.");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public DisallowWriteStream getOutputStream() {
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

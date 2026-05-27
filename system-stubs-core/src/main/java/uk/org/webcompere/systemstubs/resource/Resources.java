@@ -8,6 +8,7 @@ import java.util.concurrent.Callable;
  * Helper functions for test resources
  */
 public class Resources {
+
     /**
      * Use the execute around idiom with multiple resources
      * @param resources the resources to wrap around the test, in the order to set them up
@@ -15,12 +16,7 @@ public class Resources {
      * @return an {@link Executable} with the {@link Executable#execute} methods on it
      */
     public static <T> Executable with(TestResource... resources) {
-        return new Executable() {
-            @Override
-            public <T> T execute(Callable<T> callable) throws Exception {
-                return Resources.execute(callable, resources);
-            }
-        };
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -32,18 +28,7 @@ public class Resources {
      * @throws Exception on error
      */
     public static <T> T execute(Callable<T> callable, TestResource... resources) throws Exception {
-        LinkedList<TestResource> resourcesSetUp = new LinkedList<>();
-
-        try {
-            for (TestResource resource : resources) {
-                resourcesSetUp.addFirst(resource);
-                resource.setup();
-            }
-
-            return callable.call();
-        } finally {
-            executeCleanup(resourcesSetUp);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -53,16 +38,6 @@ public class Resources {
      * @throws Exception on the first teardown error
      */
     public static void executeCleanup(List<TestResource> resourcesSetUp) throws Exception {
-        Exception firstExceptionThrownOnTidyUp = null;
-        for (TestResource resource : resourcesSetUp) {
-            try {
-                resource.teardown();
-            } catch (Exception e) {
-                firstExceptionThrownOnTidyUp = firstExceptionThrownOnTidyUp == null ? e : firstExceptionThrownOnTidyUp;
-            }
-        }
-        if (firstExceptionThrownOnTidyUp != null) {
-            throw firstExceptionThrownOnTidyUp;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

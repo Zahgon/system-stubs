@@ -2,7 +2,6 @@ package uk.org.webcompere.systemstubs.rules;
 
 import uk.org.webcompere.systemstubs.environment.EnvironmentVariables;
 import uk.org.webcompere.systemstubs.rules.internal.SystemStubTestRule;
-
 import java.util.Map;
 import java.util.Properties;
 
@@ -49,7 +48,7 @@ public class EnvironmentVariablesRule extends EnvironmentVariables implements Sy
      */
     @Override
     public EnvironmentVariablesRule and(String name, String value) {
-        return new EnvironmentVariablesRule(super.and(name, value).getVariables());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -57,7 +56,7 @@ public class EnvironmentVariablesRule extends EnvironmentVariables implements Sy
      */
     @Override
     public EnvironmentVariablesRule set(String name, String value) {
-        return (EnvironmentVariablesRule)super.set(name, value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -65,13 +64,13 @@ public class EnvironmentVariablesRule extends EnvironmentVariables implements Sy
      */
     @Override
     public EnvironmentVariablesRule set(Map<Object, Object> properties) {
-        return (EnvironmentVariablesRule)super.set(properties);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
      * {@inheritDoc}
      */
     public EnvironmentVariablesRule remove(String name) {
-        return (EnvironmentVariablesRule)super.remove(name);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

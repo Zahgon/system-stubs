@@ -5,9 +5,7 @@ import uk.org.webcompere.systemstubs.resource.TestResource;
 import uk.org.webcompere.systemstubs.stream.output.Output;
 import uk.org.webcompere.systemstubs.stream.output.OutputFactory;
 import uk.org.webcompere.systemstubs.stream.output.TapStream;
-
 import java.io.OutputStream;
-
 import static java.util.Arrays.asList;
 
 /**
@@ -16,7 +14,9 @@ import static java.util.Arrays.asList;
  * @since 1.0.0
  */
 public class SystemErrAndOut implements Output, TestResource {
+
     private SystemErr systemErr;
+
     private SystemOut systemOut;
 
     /**
@@ -45,29 +45,26 @@ public class SystemErrAndOut implements Output, TestResource {
 
     @Override
     public void setup() throws Exception {
-        systemOut.setup();
-        systemErr.setup();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void teardown() throws Exception {
-        Resources.executeCleanup(asList(systemOut, systemErr));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public String getText() {
-        // both share the output, so use Err's
-        return systemErr.getText();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void clear() {
-        // only clear one of them as they share the same output
-        systemErr.clear();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public OutputStream getOutputStream() {
-        return systemErr.getOutputStream();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

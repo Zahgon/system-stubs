@@ -8,6 +8,7 @@ import java.util.Properties;
  * @param <T> the final type of the class which provides this
  */
 public interface NameValuePairSetter<T extends NameValuePairSetter<T>> {
+
     /**
      * Set a name value pair
      * @param name the name
@@ -23,13 +24,7 @@ public interface NameValuePairSetter<T extends NameValuePairSetter<T>> {
      */
     @SuppressWarnings("unchecked")
     default T set(Object... nameValuePairs) {
-        if (nameValuePairs.length % 2 != 0) {
-            throw new IllegalArgumentException("Must provide an even number of name/value pairs");
-        }
-        for (int i = 0; i < nameValuePairs.length; i += 2) {
-            set(nameValuePairs[i].toString(), nameValuePairs[i + 1].toString());
-        }
-        return (T)this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -39,8 +34,7 @@ public interface NameValuePairSetter<T extends NameValuePairSetter<T>> {
      */
     @SuppressWarnings("unchecked")
     default T set(Map<Object, Object> properties) {
-        properties.forEach((key, value) -> set(String.valueOf(key), String.valueOf(value)));
-        return (T)this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

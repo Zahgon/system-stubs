@@ -7,12 +7,14 @@ import java.io.OutputStream;
  * <code>System.err</code> for example.
  */
 public class NoopStream extends OutputStream implements Output<NoopStream> {
+
     @Override
     public void write(int b) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public NoopStream getOutputStream() {
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

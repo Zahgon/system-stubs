@@ -1,7 +1,6 @@
 package uk.org.webcompere.systemstubs.security;
 
 import uk.org.webcompere.systemstubs.resource.SingularTestResource;
-
 import java.util.concurrent.Callable;
 
 /**
@@ -9,7 +8,9 @@ import java.util.concurrent.Callable;
  * @since 1.0.0
  */
 public class SecurityManagerStub<T extends SecurityManager> extends SingularTestResource {
+
     private SecurityManager originalSecurityManager;
+
     private T securityManager;
 
     /**
@@ -33,14 +34,14 @@ public class SecurityManagerStub<T extends SecurityManager> extends SingularTest
      * @return the security manager
      */
     public T getSecurityManager() {
-        return securityManager;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
      * Called if we need to wipe the current security manager
      */
     protected void clearSecurityManager() {
-        this.securityManager = null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -48,26 +49,17 @@ public class SecurityManagerStub<T extends SecurityManager> extends SingularTest
      * @param securityManager the manager to set
      */
     public void setSecurityManager(T securityManager) {
-        this.securityManager = securityManager;
-        if (isActive()) {
-            System.setSecurityManager(securityManager);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     protected void doSetup() throws Exception {
-        originalSecurityManager = System.getSecurityManager();
-
-        if (securityManager == null) {
-            securityManager = createSecurityManager();
-        }
-
-        setSecurityManager(securityManager);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     protected void doTeardown() throws Exception {
-        System.setSecurityManager(originalSecurityManager);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -75,7 +67,7 @@ public class SecurityManagerStub<T extends SecurityManager> extends SingularTest
      * @return a new security manager - can be null
      */
     protected T createSecurityManager() {
-        return null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -88,11 +80,6 @@ public class SecurityManagerStub<T extends SecurityManager> extends SingularTest
      */
     @Override
     public <R> R execute(Callable<R> callable) throws Exception {
-        try {
-            return super.execute(callable);
-        } catch (AbortExecutionException ignoreAbortExecution) {
-            // stop the test early and return
-            return null;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

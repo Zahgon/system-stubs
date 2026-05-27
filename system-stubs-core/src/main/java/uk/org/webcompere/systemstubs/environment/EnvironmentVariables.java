@@ -4,10 +4,8 @@ import uk.org.webcompere.systemstubs.SystemStubs;
 import uk.org.webcompere.systemstubs.ThrowingRunnable;
 import uk.org.webcompere.systemstubs.resource.NameValuePairSetter;
 import uk.org.webcompere.systemstubs.resource.SingularTestResource;
-
 import java.nio.file.Path;
 import java.util.*;
-
 import static java.util.Collections.emptyMap;
 import static uk.org.webcompere.systemstubs.properties.PropertiesUtils.toStringMap;
 
@@ -33,7 +31,9 @@ import static uk.org.webcompere.systemstubs.properties.PropertiesUtils.toStringM
  * @since 1.0.0
  */
 public class EnvironmentVariables extends SingularTestResource implements NameValuePairSetter<EnvironmentVariables> {
+
     private final Map<String, String> variables;
+
     private final Set<String> toRemove = new HashSet<>();
 
     /**
@@ -95,8 +95,7 @@ public class EnvironmentVariables extends SingularTestResource implements NameVa
      * @see #execute(ThrowingRunnable)
      */
     public EnvironmentVariables and(String name, String value) {
-        validateNotSet(name, value);
-        return new EnvironmentVariables(variables).set(name, value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -108,16 +107,12 @@ public class EnvironmentVariables extends SingularTestResource implements NameVa
      */
     @Override
     public EnvironmentVariables set(String name, String value) {
-        variables.put(name, value);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public EnvironmentVariables remove(String name) {
-        toRemove.add(name);
-        variables.remove(name);
-
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -125,16 +120,13 @@ public class EnvironmentVariables extends SingularTestResource implements NameVa
      * @return a copy of the map
      */
     public Map<String, String> getVariables() {
-        return new HashMap<>(variables);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void validateNotSet(String name, String value) {
         if (variables.containsKey(name)) {
             String currentValue = variables.get(name);
-            throw new IllegalArgumentException("The environment variable '" + name +
-                "' cannot be set to " + format(value) + " because it was already set to " +
-                format(currentValue) + "."
-            );
+            throw new IllegalArgumentException("The environment variable '" + name + "' cannot be set to " + format(value) + " because it was already set to " + format(currentValue) + ".");
         }
     }
 
@@ -148,11 +140,11 @@ public class EnvironmentVariables extends SingularTestResource implements NameVa
 
     @Override
     protected void doSetup() {
-        EnvironmentVariableMocker.connect(variables, toRemove);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     protected void doTeardown() {
-        EnvironmentVariableMocker.remove(variables);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -7,6 +7,7 @@ import java.io.InputStream;
  * Decorates one stream by delegating to another
  */
 public class DecoratingAltStream extends AltInputStream {
+
     private InputStream decoratee;
 
     /**
@@ -19,23 +20,21 @@ public class DecoratingAltStream extends AltInputStream {
 
     @Override
     public int read() throws IOException {
-        return decoratee.read();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int read(byte[] b, int off, int len) throws IOException {
-        return decoratee.read(b, off, len);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void close() throws IOException {
-        decoratee.close();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean contains(Class<? extends InputStream> stream) {
-        return super.contains(stream) ||
-            stream.isAssignableFrom(decoratee.getClass()) ||
-            (decoratee instanceof AltInputStream && ((AltInputStream)decoratee).contains(stream));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

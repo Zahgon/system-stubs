@@ -6,13 +6,13 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
-
 import static java.lang.System.lineSeparator;
 
 /**
  * Provides lines of text from a source stream as an input stream
  */
 public class LinesAltStream extends AltInputStream {
+
     private Iterator<Byte> byteIterator;
 
     /**
@@ -38,19 +38,16 @@ public class LinesAltStream extends AltInputStream {
      */
     public LinesAltStream(Stream<String> lines, boolean addLineBreak) {
         Stream<String> source = addLineBreak ? lines.flatMap(line -> Stream.of(line, lineSeparator())) : lines;
-
-        byteIterator = source.flatMap(LinesAltStream::toByteArrayStream)
-            .iterator();
+        byteIterator = source.flatMap(LinesAltStream::toByteArrayStream).iterator();
     }
 
     @Override
     public int read() throws IOException {
-        return byteIterator.hasNext() ? byteIterator.next() : -1;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static Stream<Byte> toByteArrayStream(String s) {
         byte[] bytes = s.getBytes(Charset.defaultCharset());
-        return IntStream.range(0, bytes.length)
-            .mapToObj(i -> bytes[i]);
+        return IntStream.range(0, bytes.length).mapToObj(i -> bytes[i]);
     }
 }

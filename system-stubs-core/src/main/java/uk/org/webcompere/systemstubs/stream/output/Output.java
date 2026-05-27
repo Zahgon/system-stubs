@@ -4,7 +4,6 @@ import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
-
 import static java.util.stream.Collectors.joining;
 
 /**
@@ -14,6 +13,7 @@ import static java.util.stream.Collectors.joining;
  * @since 1.0.0
  */
 public interface Output<T extends OutputStream> {
+
     /**
      * Convert an existing {@link OutputStream} into an {@link Output}. Providing no
      * ability to clear or get the text of that output stream.
@@ -22,7 +22,7 @@ public interface Output<T extends OutputStream> {
      * @return an {@link Output} object
      */
     static <S extends OutputStream> Output<S> fromStream(S stream) {
-        return () -> stream;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -33,18 +33,7 @@ public interface Output<T extends OutputStream> {
      * @return an {@link Output} object
      */
     static <S extends OutputStream> Output<S> fromCloseableStream(S stream) {
-        return new Output<S>() {
-
-            @Override
-            public void closeOutput() throws Exception {
-                stream.close();
-            }
-
-            @Override
-            public S getOutputStream() {
-                return stream;
-            }
-        };
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -52,14 +41,14 @@ public interface Output<T extends OutputStream> {
      * @return the output as a single string - not null
      */
     default String getText() {
-        return "";
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
      * Clear the output fresh for another test
      */
     default void clear() {
-        // does nothing
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -67,7 +56,7 @@ public interface Output<T extends OutputStream> {
      * @throws Exception on any error closing
      */
     default void closeOutput() throws Exception {
-        // does nothing here
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -81,7 +70,7 @@ public interface Output<T extends OutputStream> {
      * @return this if an {@link Output} object, or the child {@link Output} otherwise
      */
     default Output<T> getOutput() {
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -89,7 +78,7 @@ public interface Output<T extends OutputStream> {
      * @return a stream of lines
      */
     default Stream<String> getLines() {
-        return Arrays.stream(getText().split(Pattern.quote(System.lineSeparator())));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -97,7 +86,7 @@ public interface Output<T extends OutputStream> {
      * @return the output as a single string
      */
     default String getLinesNormalized() {
-        return getLinesNormalized("\n");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -106,12 +95,7 @@ public interface Output<T extends OutputStream> {
      * @return the output as a single string
      */
     default String getLinesNormalized(String linebreak) {
-        String combined = getLines().collect(joining(linebreak));
-        if (combined.isEmpty()) {
-            return "";
-        }
-        // the split process removes a trailing linebreak/implied end linebreak
-        return combined + linebreak;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -119,6 +103,6 @@ public interface Output<T extends OutputStream> {
      * @return a factory
      */
     default OutputFactory<T> factoryOfSelf() {
-        return original -> this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -11,7 +11,9 @@ import java.security.Permission;
  * @since 1.0.0
  */
 public class NoExitSecurityManager extends SecurityManager {
+
     private final SecurityManager originalSecurityManager;
+
     private Integer statusOfFirstExitCall = null;
 
     public NoExitSecurityManager(SecurityManager originalSecurityManager) {
@@ -20,14 +22,11 @@ public class NoExitSecurityManager extends SecurityManager {
 
     @Override
     public void checkExit(int status) {
-        if (statusOfFirstExitCall == null) {
-            statusOfFirstExitCall = status;
-        }
-        throw new AbortExecutionException();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     boolean isCheckExitCalled() {
-        return statusOfFirstExitCall != null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -35,11 +34,7 @@ public class NoExitSecurityManager extends SecurityManager {
      * @return the exit code
      */
     public int checkSystemExit() {
-        if (isCheckExitCalled()) {
-            return getStatusOfFirstCheckExitCall();
-        }
-
-        throw new AssertionError("System.exit has not been called.");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -47,10 +42,7 @@ public class NoExitSecurityManager extends SecurityManager {
      * @return the exit code
      */
     public Integer getExitCode() {
-        if (isCheckExitCalled()) {
-            return statusOfFirstExitCall;
-        }
-        return null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private int getStatusOfFirstCheckExitCall() {
@@ -62,195 +54,141 @@ public class NoExitSecurityManager extends SecurityManager {
 
     @Override
     public Object getSecurityContext() {
-        return (originalSecurityManager == null) ? super.getSecurityContext()
-            : originalSecurityManager.getSecurityContext();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkPermission(Permission perm) {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkPermission(perm);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkPermission(Permission perm, Object context) {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkPermission(perm, context);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkCreateClassLoader() {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkCreateClassLoader();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkAccess(Thread t) {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkAccess(t);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkAccess(ThreadGroup g) {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkAccess(g);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkExec(String cmd) {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkExec(cmd);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkLink(String lib) {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkLink(lib);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkRead(FileDescriptor fd) {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkRead(fd);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkRead(String file) {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkRead(file);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkRead(String file, Object context) {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkRead(file, context);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkWrite(FileDescriptor fd) {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkWrite(fd);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkWrite(String file) {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkWrite(file);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkDelete(String file) {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkDelete(file);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkConnect(String host, int port) {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkConnect(host, port);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkConnect(String host, int port, Object context) {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkConnect(host, port, context);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkListen(int port) {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkListen(port);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkAccept(String host, int port) {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkAccept(host, port);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkMulticast(InetAddress maddr) {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkMulticast(maddr);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkMulticast(InetAddress maddr, byte ttl) {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkMulticast(maddr, ttl);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkPropertiesAccess() {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkPropertiesAccess();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkPropertyAccess(String key) {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkPropertyAccess(key);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkPrintJobAccess() {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkPrintJobAccess();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkPackageAccess(String pkg) {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkPackageAccess(pkg);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkPackageDefinition(String pkg) {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkPackageDefinition(pkg);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkSetFactory() {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkSetFactory();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void checkSecurityAccess(String target) {
-        if (originalSecurityManager != null) {
-            originalSecurityManager.checkSecurityAccess(target);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public ThreadGroup getThreadGroup() {
-        return (originalSecurityManager == null) ? super.getThreadGroup()
-            : originalSecurityManager.getThreadGroup();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

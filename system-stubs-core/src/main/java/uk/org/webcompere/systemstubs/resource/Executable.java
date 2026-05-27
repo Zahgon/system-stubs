@@ -1,7 +1,6 @@
 package uk.org.webcompere.systemstubs.resource;
 
 import uk.org.webcompere.systemstubs.ThrowingRunnable;
-
 import java.util.concurrent.Callable;
 
 /**
@@ -12,6 +11,7 @@ import java.util.concurrent.Callable;
  */
 @FunctionalInterface
 public interface Executable {
+
     /**
      * Execute this test resource around a callable
      * @param callable the callable to execute
@@ -27,6 +27,6 @@ public interface Executable {
      * @throws Exception on any error thrown by the callable
      */
     default void execute(ThrowingRunnable runnable) throws Exception {
-        execute(runnable.asCallable());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

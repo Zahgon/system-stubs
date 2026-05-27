@@ -2,11 +2,9 @@ package uk.org.webcompere.systemstubs.properties;
 
 import uk.org.webcompere.systemstubs.resource.NameValuePairSetter;
 import uk.org.webcompere.systemstubs.resource.SingularTestResource;
-
 import java.util.HashSet;
 import java.util.Properties;
 import java.util.Set;
-
 import static java.lang.System.getProperties;
 import static java.lang.System.setProperties;
 
@@ -15,9 +13,10 @@ import static java.lang.System.setProperties;
  * existing properties when started, and restores them when complete. Allows for a list of properties
  * that will be applied to the system to be set before the stubbing is triggered.
  */
-public class SystemPropertiesImpl<T extends SystemPropertiesImpl<T>> extends SingularTestResource
-    implements NameValuePairSetter<T> {
+public class SystemPropertiesImpl<T extends SystemPropertiesImpl<T>> extends SingularTestResource implements NameValuePairSetter<T> {
+
     private Properties originalProperties;
+
     private Properties properties;
 
     private Set<String> propertiesToRemove = new HashSet<>();
@@ -72,11 +71,7 @@ public class SystemPropertiesImpl<T extends SystemPropertiesImpl<T>> extends Sin
     @Override
     @SuppressWarnings("unchecked")
     public T set(String name, String value) {
-        properties.setProperty(name, value);
-        if (isActive()) {
-            System.setProperty(name, value);
-        }
-        return (T) this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -89,24 +84,16 @@ public class SystemPropertiesImpl<T extends SystemPropertiesImpl<T>> extends Sin
     @Override
     @SuppressWarnings("unchecked")
     public T remove(String name) {
-        propertiesToRemove.add(name);
-        if (isActive()) {
-            System.getProperties().remove(name);
-        }
-        return (T) this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     protected void doSetup() throws Exception {
-        originalProperties = getProperties();
-        Properties copyProperties = PropertiesUtils.copyOf(originalProperties);
-        propertiesToRemove.forEach(copyProperties::remove);
-        copyProperties.putAll(properties);
-        setProperties(copyProperties);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     protected void doTeardown() throws Exception {
-        setProperties(originalProperties);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

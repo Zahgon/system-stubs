@@ -1,7 +1,6 @@
 package uk.org.webcompere.systemstubs;
 
 import uk.org.webcompere.systemstubs.exception.WrappedThrowable;
-
 import java.util.concurrent.Callable;
 
 /**
@@ -11,6 +10,7 @@ import java.util.concurrent.Callable;
  * @since 1.0.0
  */
 public interface ThrowingRunnable {
+
     /**
      * Execute the action.
      *
@@ -23,16 +23,7 @@ public interface ThrowingRunnable {
      * @return a {@link Callable} which executes this
      */
     default Callable<Void> asCallable() {
-        return () -> {
-            try {
-                run();
-            } catch (Error | Exception e) {
-                throw e;
-            } catch (Throwable t) {
-                throw new WrappedThrowable(t);
-            }
-            return null;
-        };
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -42,6 +33,6 @@ public interface ThrowingRunnable {
      * @since 1.0.0
      */
     static Callable<Void> asCallable(ThrowingRunnable runnable) {
-        return runnable.asCallable();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

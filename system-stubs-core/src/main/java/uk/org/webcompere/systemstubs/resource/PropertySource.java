@@ -1,7 +1,6 @@
 package uk.org.webcompere.systemstubs.resource;
 
 import uk.org.webcompere.systemstubs.exception.LoadingException;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,13 +13,14 @@ import java.util.Properties;
  * Methods to load properties from files or resources
  */
 public class PropertySource {
+
     /**
      * Load properties from a file path
      * @param path the path to the file
      * @return a {@link Properties} object
      */
     public static Properties fromFile(Path path) {
-        return fromFile(path.toFile());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -29,7 +29,7 @@ public class PropertySource {
      * @return a {@link Properties} object
      */
     public static Properties fromFile(String path) {
-        return fromFile(Paths.get(path));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -38,11 +38,7 @@ public class PropertySource {
      * @return a {@link Properties} object
      */
     public static Properties fromFile(File file) {
-        try {
-            return fromInputStream(new FileInputStream(file));
-        } catch (IOException e) {
-            throw new LoadingException("Cannot read file: " + file.getAbsolutePath(), e);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -51,7 +47,7 @@ public class PropertySource {
      * @return a {@link Properties} object
      */
     public static Properties fromResource(String resourceName) {
-        return fromInputStream(PropertySource.class.getClassLoader().getResourceAsStream(resourceName));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -63,12 +59,6 @@ public class PropertySource {
      * @return a {@link Properties} objects
      */
     public static Properties fromInputStream(InputStream stream) {
-        try (InputStream read = stream) {
-            Properties properties = new Properties();
-            properties.load(read);
-            return properties;
-        } catch (IOException e) {
-            throw new LoadingException("Could not load values", e);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

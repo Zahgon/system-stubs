@@ -10,6 +10,7 @@ import java.util.stream.Stream;
  * an {@link OutputStream}
  */
 public class MultiplexOutput extends OutputStream implements Output<MultiplexOutput> {
+
     private Output<?>[] outputs;
 
     /**
@@ -18,49 +19,36 @@ public class MultiplexOutput extends OutputStream implements Output<MultiplexOut
      * @param others additional outputs
      */
     public MultiplexOutput(Output<?> first, Output<?>... others) {
-        outputs = Stream.concat(Stream.of(first), Arrays.stream(others))
-            .toArray(Output[]::new);
+        outputs = Stream.concat(Stream.of(first), Arrays.stream(others)).toArray(Output[]::new);
     }
 
     @Override
     public void write(int b) throws IOException {
-        for (Output<?> output : outputs) {
-            output.getOutputStream().write(b);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public String getText() {
-        return outputs[0].getText();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void clear() {
-        for (Output<?> output : outputs) {
-            output.clear();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void close() throws IOException {
-        try {
-            closeOutput();
-        } catch (IOException e) {
-            throw e;
-        } catch (Exception e) {
-            throw new IOException(e);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void closeOutput() throws Exception {
-        for (Output<?> output : outputs) {
-            output.closeOutput();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public MultiplexOutput getOutputStream() {
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

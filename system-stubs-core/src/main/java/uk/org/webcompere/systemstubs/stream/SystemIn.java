@@ -3,10 +3,8 @@ package uk.org.webcompere.systemstubs.stream;
 import uk.org.webcompere.systemstubs.ThrowingRunnable;
 import uk.org.webcompere.systemstubs.resource.SingularTestResource;
 import uk.org.webcompere.systemstubs.stream.input.*;
-
 import java.io.IOException;
 import java.io.InputStream;
-
 import static java.lang.System.setIn;
 
 /**
@@ -19,7 +17,9 @@ import static java.lang.System.setIn;
  * @since 1.0.0
  */
 public class SystemIn extends SingularTestResource {
+
     private InputStream originalIn;
+
     private AltInputStream altInputStream;
 
     /**
@@ -60,7 +60,7 @@ public class SystemIn extends SingularTestResource {
      * @return <code>this</code> for fluent use
      */
     public SystemIn setInputStream(InputStream inputStream) {
-        return setInputStream(new DecoratingAltStream(inputStream));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -69,11 +69,7 @@ public class SystemIn extends SingularTestResource {
      * @return <code>this</code> for fluent use
      */
     public SystemIn setInputStream(AltInputStream altInputStream) {
-        if (isActive()) {
-            setIn(altInputStream);
-        }
-        this.altInputStream = altInputStream;
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -84,16 +80,7 @@ public class SystemIn extends SingularTestResource {
      *     already set by {@link #andExceptionThrownOnInputEnd(RuntimeException)}
      */
     public SystemIn andExceptionThrownOnInputEnd(IOException exception) {
-        if (altInputStream.contains(ThrowAtEndStream.class)) {
-            throw new IllegalStateException("You cannot call" +
-                " andExceptionThrownOnInputEnd(IOException) because" +
-                " andExceptionThrownOnInputEnd has" +
-                " already been called.");
-        }
-
-        setInputStream(new ThrowAtEndStream(altInputStream, exception));
-
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -104,27 +91,16 @@ public class SystemIn extends SingularTestResource {
      *     set by {@link #andExceptionThrownOnInputEnd(IOException)}
      */
     public SystemIn andExceptionThrownOnInputEnd(RuntimeException exception) {
-        if (altInputStream.contains(ThrowAtEndStream.class)) {
-            throw new IllegalStateException("You cannot call" +
-                " andExceptionThrownOnInputEnd(RuntimeException) because" +
-                " andExceptionThrownOnInputEnd has" +
-                " already been called.");
-        }
-
-        setInputStream(new ThrowAtEndStream(altInputStream, exception));
-
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     protected void doSetup() throws Exception {
-        originalIn = System.in;
-        setIn(altInputStream);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     protected void doTeardown() throws Exception {
-        setIn(originalIn);
-        altInputStream.close();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

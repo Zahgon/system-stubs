@@ -10,25 +10,23 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
  * @since 1.0.0
  */
 public class SystemExit extends SecurityManagerStub<NoExitSecurityManager> {
+
     /**
      * What was the exit code provided if System.exit was called.
      * @return exit code or <code>null</code> if no exit called
      */
     @SuppressFBWarnings("BC_UNCONFIRMED_CAST_OF_RETURN_VALUE")
     public Integer getExitCode() {
-        return getSecurityManager() == null ? null : getSecurityManager().getExitCode();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     protected NoExitSecurityManager createSecurityManager() {
-        return new NoExitSecurityManager(System.getSecurityManager());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     protected void doSetup() throws Exception {
-        // clear any previous security managers
-        clearSecurityManager();
-        super.doSetup();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }
-

@@ -15,10 +15,8 @@ import uk.org.webcompere.systemstubs.stream.input.LinesAltStream;
 import uk.org.webcompere.systemstubs.stream.output.DisallowWriteStream;
 import uk.org.webcompere.systemstubs.stream.output.NoopStream;
 import uk.org.webcompere.systemstubs.stream.output.Output;
-
 import java.io.IOException;
 import java.util.concurrent.Callable;
-
 import static java.util.Collections.singletonMap;
 
 /**
@@ -302,8 +300,7 @@ public class SystemStubs {
      * @since 1.0.0
      */
     public static void assertNothingWrittenToSystemErr(ThrowingRunnable throwingRunnable) throws Exception {
-        new SystemErr(new DisallowWriteStream())
-            .execute(throwingRunnable);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -330,8 +327,7 @@ public class SystemStubs {
      * @since 1.0.0
      */
     public static void assertNothingWrittenToSystemOut(ThrowingRunnable throwingRunnable) throws Exception {
-        new SystemOut(new DisallowWriteStream())
-            .execute(throwingRunnable);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -346,8 +342,7 @@ public class SystemStubs {
      * @see #assertNothingWrittenToSystemErr(ThrowingRunnable)
      */
     public static void assertNothingWrittenToSystemErrOrOut(ThrowingRunnable throwingRunnable) throws Exception {
-        new SystemErrAndOut(new DisallowWriteStream())
-            .execute(throwingRunnable);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -373,9 +368,7 @@ public class SystemStubs {
      */
     @SuppressFBWarnings("BC_UNCONFIRMED_CAST_OF_RETURN_VALUE")
     public static int catchSystemExit(ThrowingRunnable throwingRunnable) throws Exception {
-        SystemExit exit = new SystemExit();
-        exit.execute(throwingRunnable);
-        return exit.getSecurityManager().checkSystemExit();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -399,8 +392,7 @@ public class SystemStubs {
      * @since 1.0.0
      */
     public static void muteSystemErr(ThrowingRunnable throwingRunnable) throws Exception {
-        new SystemErr(new NoopStream())
-            .execute(throwingRunnable);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -423,8 +415,7 @@ public class SystemStubs {
      * @since 1.0.0
      */
     public static void muteSystemOut(ThrowingRunnable throwingRunnable) throws Exception {
-        new SystemOut(new NoopStream())
-            .execute(throwingRunnable);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -467,8 +458,7 @@ public class SystemStubs {
      * @since 1.0.0
      */
     public static void restoreSystemProperties(ThrowingRunnable throwingRunnable) throws Exception {
-        new SystemProperties()
-            .execute(throwingRunnable.asCallable());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -492,8 +482,7 @@ public class SystemStubs {
      * @since 1.0.0
      */
     public static String tapSystemErr(ThrowingRunnable throwingRunnable) throws Exception {
-        SystemErr systemErr = executeInTappedSystemError(throwingRunnable);
-        return systemErr.getText();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static SystemErr executeInTappedSystemError(ThrowingRunnable throwingRunnable) throws Exception {
@@ -530,8 +519,7 @@ public class SystemStubs {
      * @since 1.0.0
      */
     public static String tapSystemErrNormalized(ThrowingRunnable throwingRunnable) throws Exception {
-        return executeInTappedSystemError(throwingRunnable)
-            .getLinesNormalized();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -555,9 +543,7 @@ public class SystemStubs {
      * @since 1.0.0
      */
     public static String tapSystemOut(ThrowingRunnable throwingRunnable) throws Exception {
-        SystemOut systemOut = new SystemOut();
-        systemOut.execute(throwingRunnable);
-        return systemOut.getText();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -582,8 +568,7 @@ public class SystemStubs {
      * @since 1.0.0
      */
     public static String tapSystemOutNormalized(ThrowingRunnable throwingRunnable) throws Exception {
-        return executeInTappedSystemOut(throwingRunnable)
-            .getLinesNormalized();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -593,7 +578,7 @@ public class SystemStubs {
      * @since 1.0.0
      */
     public static SystemOut withTapSystemOut() {
-        return new SystemOut();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -604,7 +589,7 @@ public class SystemStubs {
      * @since 1.0.0
      */
     public static SystemErrAndOut withTapSystemErrAndOut() {
-        return new SystemErrAndOut();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -616,7 +601,7 @@ public class SystemStubs {
      * @since 1.0.0
      */
     public static SystemErrAndOut withSystemErrAndOut(Output output) {
-        return new SystemErrAndOut(output);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -631,9 +616,7 @@ public class SystemStubs {
      * @since 1.0.0
      */
     public static String tapSystemErrAndOut(ThrowingRunnable throwingRunnable) throws Exception {
-        SystemErrAndOut tappedSystem = withTapSystemErrAndOut();
-        tappedSystem.execute(throwingRunnable);
-        return tappedSystem.getText();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -676,7 +659,7 @@ public class SystemStubs {
      * @since 1.0.0
      */
     public static EnvironmentVariables withEnvironmentVariable(String name, String value) {
-        return new EnvironmentVariables(singletonMap(name, value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -689,7 +672,7 @@ public class SystemStubs {
      * @since 1.0.0
      */
     public static EnvironmentVariables withEnvironmentVariables(String name, String value, String... values) {
-        return new EnvironmentVariables(name, value, values);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -699,7 +682,7 @@ public class SystemStubs {
      * @since 1.0.0
      */
     public static EnvironmentVariables withEnvironmentVariables() {
-        return new EnvironmentVariables();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -714,7 +697,7 @@ public class SystemStubs {
      * @since 1.0.0
      */
     public static <T> T execute(Callable<T> callable, TestResource... resources) throws Exception {
-        return Resources.execute(callable, resources);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -727,7 +710,7 @@ public class SystemStubs {
      * @since 1.0.0
      */
     public static void execute(ThrowingRunnable runnable, TestResource... resources) throws Exception {
-        Resources.execute(runnable.asCallable(), resources);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -754,10 +737,8 @@ public class SystemStubs {
      * @throws Exception any exception thrown by the statement.
      * @since 1.0.0
      */
-    public static void withSecurityManager(SecurityManager securityManager,
-                                           ThrowingRunnable throwingRunnable) throws Exception {
-        new SecurityManagerStub<>(securityManager)
-            .execute(throwingRunnable.asCallable());
+    public static void withSecurityManager(SecurityManager securityManager, ThrowingRunnable throwingRunnable) throws Exception {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -824,7 +805,6 @@ public class SystemStubs {
      * @since 1.0.0
      */
     public static SystemIn withTextFromSystemIn(String... lines) {
-        return new SystemIn(new LinesAltStream(lines));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

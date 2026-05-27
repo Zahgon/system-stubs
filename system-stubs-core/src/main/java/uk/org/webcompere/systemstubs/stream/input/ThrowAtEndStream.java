@@ -1,11 +1,9 @@
 package uk.org.webcompere.systemstubs.stream.input;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.Objects;
-
 import static java.lang.System.lineSeparator;
 
 /**
@@ -14,7 +12,9 @@ import static java.lang.System.lineSeparator;
  * read-ahead scanners from hitting the error too soon. Decorator/chain of responsibility pattern.
  */
 public class ThrowAtEndStream extends DecoratingAltStream {
+
     private IOException ioException;
+
     private RuntimeException runtimeException;
 
     /**
@@ -41,29 +41,12 @@ public class ThrowAtEndStream extends DecoratingAltStream {
 
     @Override
     public int read() throws IOException {
-        int next = super.read();
-        if (next == -1) {
-            throwException();
-        }
-        return next;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int read(byte[] buffer, int offset, int len) throws IOException {
-        if (buffer == null) {
-            throw new NullPointerException();
-        }
-        if (offset < 0 || len < 0 || len > buffer.length - offset) {
-            throw new IndexOutOfBoundsException();
-        }
-        if (len == 0) {
-            return 0;
-        }
-
-        // return only a line at a time to the calling code
-        // this prevents an exception being thrown as a caller reads ahead beyond
-        // the last line
-        return readNextLine(buffer, offset, len);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private int readNextLine(byte[] buffer, int offset, int len) throws IOException {
@@ -74,9 +57,8 @@ public class ThrowAtEndStream extends DecoratingAltStream {
             if (next == -1) {
                 return writeLocation == offset ? -1 : writeLocation - offset;
             }
-            buffer[writeLocation] = (byte)(next & 0xff);
+            buffer[writeLocation] = (byte) (next & 0xff);
             writeLocation++;
-
             if (reachedLineEnd(buffer, offset, writeLocation, lineSeparator)) {
                 break;
             }
@@ -88,13 +70,11 @@ public class ThrowAtEndStream extends DecoratingAltStream {
         if (bufferEnd - bufferStart < lineSeparator.length) {
             return false;
         }
-
         for (int i = 0; i < lineSeparator.length; i++) {
             if (buffer[(bufferEnd - lineSeparator.length) + i] != lineSeparator[i]) {
                 return false;
             }
         }
-
         return true;
     }
 

@@ -7,6 +7,7 @@ import java.util.concurrent.Callable;
  * torn down at the end.
  */
 public interface TestResource extends Executable {
+
     /**
      * Prepare the resource for testing
      * @throws Exception on error starting
@@ -28,6 +29,6 @@ public interface TestResource extends Executable {
      * @since 1.0.0
      */
     default <T> T execute(Callable<T> callable) throws Exception {
-        return Resources.execute(callable, this);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }
